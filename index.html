@@ -490,6 +490,7 @@
   const CONFIG = {
     phoneDisplay: '01 39 34 02 07',
     phoneIntl: '33139340207',
+    waNumber: '33766338472', // TEST : numéro de test. Remettre '33139340207' (institut) avant la livraison
     email: '', // Adresse e-mail de l'institut (laisser vide : le client saisit le destinataire)
     // Horaires par jour (0 = dimanche … 6 = samedi), en minutes depuis minuit
     hours: { 2: [555, 1140], 3: [570, 780], 4: [555, 1140], 5: [555, 1140], 6: [540, 1140] },
@@ -787,21 +788,16 @@
     }
     err.classList.add('hidden');
     const s = state.service;
-    const pretty = phone.replace(/^(\+33|0033)/, '0').replace(/(\d{2})(?=\d)/g, '$1 ');
+    const tel = phone.replace(/^(\+33|0033)/, '0').replace(/(\d{2})(?=\d)/g, '$1 ');
     const note = f.note.value.trim();
-    const recap =
-`Bonjour Lydie,
-
-Je souhaite prendre rendez-vous :
-• Soin : ${s.n} (${dur(s.t)} · ${euro(s.p)})
-• Date : ${fmtDate(state.date)} à ${hhmm(state.time)}
-• Nom : ${fn} ${ln.toUpperCase()}
-• Téléphone : ${pretty}${note ? `\n• Précision : ${note}` : ''}
-
-Merci de me confirmer ce créneau.`;
-    $('#recapText').textContent = recap;
-    $('#waLink').href = `https://wa.me/${CONFIG.phoneIntl}?text=${encodeURIComponent(recap)}`;
-    $('#mailLink').href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('Demande de rendez-vous · ' + s.n)}&body=${encodeURIComponent(recap)}`;
+    const message = `Bonjour, je souhaite réserver un créneau pour ${s.n} le ${fmtDate(state.date)} à ${hhmm(state.time)}. Mes coordonnées : ${fn} ${ln.toUpperCase()} - ${tel}.${note ? ` Précision : ${note}` : ''}`;
+    const url = `https://wa.me/${CONFIG.waNumber}?text=${encodeURIComponent(message)}`;
+    // Ouverture directe de WhatsApp ; le récapitulatif reste affiché en secours si l'onglet est bloqué
+    const win = window.open(url, '_blank');
+    if (win) win.opener = null;
+    $('#recapText').textContent = message;
+    $('#waLink').href = url;
+    $('#mailLink').href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('Demande de rendez-vous · ' + s.n)}&body=${encodeURIComponent(message)}`;
     goto(4);
   }
   $('#copyBtn').addEventListener('click', async (e) => {
