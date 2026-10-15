@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://institut-lydie.vercel.app/sitemap.xml

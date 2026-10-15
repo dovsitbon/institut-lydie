@@ -1,0 +1,14 @@
+# Institut Lydie
+
+> Institut de beauté et de bien-être à Enghien-les-Bains (95880) : soins du visage, modelages du corps, épilations, beauté du regard et maquillage. Note Google 4,7/5.
+
+- Adresse : 26 Boulevard d'Ormesson, 95880 Enghien-les-Bains, France
+- Téléphone : 01 39 34 02 07 (+33 1 39 34 02 07)
+- Horaires : mardi, jeudi, vendredi 09h15-19h00 ; mercredi 09h30-13h00 ; samedi 09h00-19h00 ; fermé dimanche et lundi
+- Réservation : formulaire en ligne sur https://institut-lydie.vercel.app/#reservation, puis confirmation par l'institut
+
+## Soins
+- Soins du visage : éclat, anti-âge liftant, purifiant peaux à imperfections, soin homme
+- Rituels et modelages : modelage relaxant 30 ou 60 min, modelage esthétique remodelant, rituel visage et corps
+- Épilations : à la cire, forfaits douceur
+- Regard et maquillage : rehaussement de cils, teintures, maquillage jour, soirée et mariée
